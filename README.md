@@ -7,7 +7,7 @@ SkyMM will attempt to discover all mods present in Skyrim's ROMFS on the SD card
 Through the interface, you can toggle mods on or off, or change the load order by holding `Y`. Note that the load order
 for pure replacement mods (lacking an ESP) will not be preserved when the respective mods are disabled.
 
-When the save function is invoked, the INI and `Plugins` files will be modified accordingly and saved to the SD card.
+When the save function is invoked, the INI and ~~`Plugins`~~ `skyrim.ccc ` files will be modified accordingly and saved to the SD card.
 
 Currently, the app requires that all mods follow a standard naming scheme:
 

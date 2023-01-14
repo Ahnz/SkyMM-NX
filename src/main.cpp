@@ -220,6 +220,43 @@ int writePluginsFile(void)
 		}
 	}
 
+	
+
+	return 0;
+}
+
+int writeCCCFile(void)
+{
+
+	std::string ccc_file = std::string(SKYRIM_DATA_DIR) + "/" + (SKYRIM_CCC_FILE);
+	std::ofstream ccc_stream = std::ofstream(getRomfsPath(ccc_file),
+												 std::ios::out | std::ios::trunc | std::ios::binary);
+
+	if (!ccc_stream.good())
+	{
+		FATAL(("sky/fatal/plugin_atm"_i18n).c_str());
+		return -1;
+	}
+
+	for (std::shared_ptr<SkyrimMod> mod : getGlobalModList())
+	{
+		if (mod->has_esp)
+		{
+			if (mod->esp_enabled)
+			{
+				if (mod->is_master)
+				{
+					ccc_stream << mod->base_name << ".esm";
+				}
+				else
+				{
+					ccc_stream << mod->base_name << ".esp";
+				}
+				ccc_stream << '\n';
+			}
+		}
+	}
+
 	return 0;
 }
 
@@ -489,6 +526,7 @@ int main(int argc, char **argv)
 					gui->setFooterText(g_status_msg);
 				}
 				writePluginsFile();
+				writeCCCFile();
 				writeIniChanges();
 				g_dirty = false;
 
@@ -633,6 +671,7 @@ int main(int argc, char **argv)
 				consoleUpdate(NULL);
 
 				writePluginsFile();
+				writeCCCFile();
 				writeIniChanges();
 				g_dirty = false;
 

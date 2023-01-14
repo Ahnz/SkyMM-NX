@@ -35,6 +35,8 @@
 #define SKYRIM_INI_FILE "Skyrim.ini"
 #define SKYRIM_INI_LANG_FILE_PREFIX "Skyrim_"
 #define SKYRIM_PLUGINS_FILE "Plugins"
+#define SKYRIM_CCC_FILE "Skyrim.ccc"
+#define SKYRIM_AOC_FILE "Skyrim_aoc.ccc"
 
 #define LANG_CODE_MAX_LEN 6
 
